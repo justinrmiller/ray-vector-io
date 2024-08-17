@@ -1,12 +1,10 @@
-import pyarrow as pa
-
 from typing import List, Optional
 
+import pyarrow as pa
+from qdrant_client import QdrantClient, grpc, models
 from ray.data.block import Block, BlockMetadata
 from ray.data.datasource.datasource import Datasource, ReadTask
 from ray.util.annotations import PublicAPI
-
-from qdrant_client import QdrantClient, models, grpc
 
 
 @PublicAPI(stability="alpha")
@@ -102,7 +100,8 @@ class QdrantDatasource(Datasource):
 
             stop_scrolling = (
                 next_offset is None
-                # If `prefer_grpc`` is set to true in the client, next_offset will be a grpc.PointId object
+                # If `prefer_grpc`` is set to true in the client,
+                # next_offset will be a grpc.PointId object
                 or (
                     isinstance(next_offset, grpc.PointId)
                     and next_offset.num == 0

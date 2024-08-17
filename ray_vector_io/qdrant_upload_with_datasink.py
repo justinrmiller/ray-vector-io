@@ -1,10 +1,9 @@
 # Example usage in a script
-import ray
 import time
 
-from qdrant_client import QdrantClient
-
+import ray
 from qdrant import qdrant_datasink
+from qdrant_client import QdrantClient
 
 ray.init()
 
@@ -19,11 +18,7 @@ dataset = ray.data.read_parquet(PARQUET_FILE_PATH)
 # Optionally filter the dataset or perform any transformation
 # filtered_dataset = dataset.filter(...)
 
-qdrant_client = QdrantClient(
-    host=HOST,
-    port=6334,
-    prefer_grpc=True
-)
+qdrant_client = QdrantClient(host=HOST, port=6334, prefer_grpc=True)
 
 qdrant_datasink = qdrant_datasink.QdrantDatasink(
     client=qdrant_client,
@@ -37,6 +32,8 @@ dataset.write_datasink(qdrant_datasink)
 
 end_time = time.perf_counter()
 
-print(f"Time taken to write {dataset.count()} rows: {end_time - start_time:0.2f} seconds")
+print(
+    f"Time taken to write {dataset.count()} rows: {end_time - start_time:0.2f} seconds"
+)
 
 ray.shutdown()

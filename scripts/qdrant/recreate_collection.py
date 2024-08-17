@@ -7,7 +7,9 @@ embedding_size = 768
 # Initialize Qdrant client
 client = QdrantClient(host="localhost", port=6333)
 
-if collection_name in [collection.name for collection in client.get_collections().collections]:
+if collection_name in [
+    collection.name for collection in client.get_collections().collections
+]:
     client.delete_collection(collection_name=collection_name)
 
 # Create the collection

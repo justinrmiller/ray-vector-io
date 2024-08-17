@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "ray-vector-io"
+version = "0.0.1"
+description = "A Python package developed to allow for easy integration of various vectorstores with Ray."
+authors = ["Justin Miller <justinrmiller@gmail.com>"]
+license = "MIT License"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+pandas = "^2.2.2"
+pyarrow = "^17.0.0"
+ray = "^2.34.0"
+qdrant-client = "^1.11.0"
+tqdm = "^4.66.5"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+black = "^24.8.0"
+isort = "^5.13.2"
+flake8 = "^7.1.1"
+bandit = "^1.7.9"
+safety = "^3.2.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

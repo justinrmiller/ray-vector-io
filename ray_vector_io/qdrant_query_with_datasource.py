@@ -1,10 +1,9 @@
 import time
 
 import ray
+from qdrant import qdrant_datasource
 from qdrant_client import QdrantClient
 from ray.data import read_datasource
-
-from qdrant import qdrant_datasource
 
 ray.init()
 
@@ -13,11 +12,7 @@ PORT = 6334
 COLLECTION_NAME = "collection"
 LIMIT = 100_000
 
-qdrant_client = QdrantClient(
-    host=HOST,
-    port=6334,
-    prefer_grpc=True
-)
+qdrant_client = QdrantClient(host=HOST, port=6334, prefer_grpc=True)
 
 qdrant_datasource = qdrant_datasource.QdrantDatasource(
     client=qdrant_client,
@@ -27,10 +22,7 @@ qdrant_datasource = qdrant_datasource.QdrantDatasource(
     limit=LIMIT,
 )
 
-dataset = read_datasource(
-    qdrant_datasource,
-    override_num_blocks=3
-)
+dataset = read_datasource(qdrant_datasource, override_num_blocks=3)
 
 start_time = time.perf_counter()
 
@@ -39,7 +31,10 @@ dataset.write_parquet(output_path_parquet)
 
 end_time = time.perf_counter()
 
-print(f"Time taken to write parquet files to {output_path_parquet}: {end_time - start_time:0.2f} seconds")
+print(
+    f"Time taken to write parquet files to {output_path_parquet}: "
+    f"{end_time - start_time:0.2f} seconds"
+)
 
 # output_path_csv = "local://csv/output"
 # dataset.write_csv(output_path_csv)

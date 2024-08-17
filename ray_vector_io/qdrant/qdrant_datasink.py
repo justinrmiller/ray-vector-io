@@ -1,13 +1,11 @@
 from typing import Any, Iterable, Optional
 
-from ray.data.block import Block
-from ray.data.datasource.datasink import Datasink
-from ray.data._internal.delegating_block_builder import DelegatingBlockBuilder
-from ray.data._internal.execution.interfaces import TaskContext
-from ray.data.block import BlockAccessor
-
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct
+from ray.data._internal.delegating_block_builder import DelegatingBlockBuilder
+from ray.data._internal.execution.interfaces import TaskContext
+from ray.data.block import Block, BlockAccessor
+from ray.data.datasource.datasink import Datasink
 
 
 class QdrantDatasink(Datasink):
