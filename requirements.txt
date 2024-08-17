@@ -1,0 +1,10 @@
+# qdrant
+qdrant-client
+
+# ml libraries
+pandas
+pyarrow
+ray
+
+# helpful libraries
+tqdm
