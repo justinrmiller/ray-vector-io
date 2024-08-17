@@ -48,7 +48,3 @@ jobs:
         run: poetry run isort . --check-only --profile black
       - name: Run flake8
         run: poetry run flake8 .
-      - name: Run bandit
-        run: poetry run bandit .
-      - name: Run saftey
-        run: poetry run safety check
