@@ -5,7 +5,7 @@ from qdrant_client.models import PointStruct
 # Configuration parameters
 collection_name = "collection"
 embedding_size = 768
-num_embeddings = 10_000
+num_embeddings = 100
 batch_size = 200
 
 # Initialize Qdrant client

@@ -40,7 +40,6 @@ class QdrantDatasource(Datasource):
 
     def get_read_tasks(self, parallelism: int) -> List[ReadTask]:
         def make_block() -> Block:
-            print("Making block")
             points = self._paginated_scroll()
 
             p = {"id": pa.array([item.id for item in points])}
@@ -67,7 +66,7 @@ class QdrantDatasource(Datasource):
 
         return [
             ReadTask(
-                lambda args = (): [make_block(*args)],
+                lambda args=(): [make_block(*args)],
                 metadata,
             )
         ]
