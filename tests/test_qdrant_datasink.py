@@ -3,7 +3,6 @@ from unittest.mock import MagicMock, patch
 import pandas as pd
 import pytest
 from qdrant_client import QdrantClient
-from ray.data._internal.execution.interfaces import TaskContext
 from ray.data.block import Block
 
 from ray_vector_io.qdrant.qdrant_datasink import QdrantDatasink
