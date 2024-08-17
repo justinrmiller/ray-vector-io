@@ -161,4 +161,4 @@ cython_debug/
 
 scripts/qdrant/qdrant_data
 csv/*.csv
-parquet/*.parquet
+parquet/output/*.parquet
