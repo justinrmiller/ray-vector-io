@@ -32,7 +32,7 @@ def mock_block():
     dict = {
         "id": [1, 2],
         "payload": [{"key": "value"}, {"key": "value2"}],
-        "vector": [[0.1, 0.2], [0.2, 0.3]]
+        "vector": [[0.1, 0.2], [0.2, 0.3]],
     }
     block = Block.from_pandas(pd.DataFrame.from_dict(dict))
 
